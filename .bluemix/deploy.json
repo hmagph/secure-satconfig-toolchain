@@ -23,50 +23,7 @@
             "validator": {
                 "v-type": "api-key"
             }
-        },
-        "vsiRegion": {
-            "description": {
-                "$ref": "#/messages/deploy.vsiRegionLabel"
-            },
-            "type": "string",
-            "validator": {
-                "v-type": "vsi-region",
-                "params": [
-                    "api-key"
-                ]
-            }
-        },
-        "type": {
-            "description": {
-                "$ref": "#/messages/deploy.vsiAuthType"
-            },
-            "title": "Authentication Type",
-            "type": "string",
-            "enum": [
-                "credentials",
-                "ssh_private_key"
-            ]
-        },
-        "host-user-name": {
-            "description": {
-                "$ref": "#/messages/deploy.vsiUserName"
-            },
-            "title": "User Name",
-            "type": "string"
-        },
-        "host-ssh-keys": {
-            "description": {
-                "$ref": "#/messages/deploy.vsiSshKey"
-            },
-            "title": "Content of SSH Key File",
-            "type": "password"
-        },
-        "host-user-password": {
-            "description": {
-                "$ref": "#/messages/deploy.vsiUserPassword"
-            },
-            "title": "Password",
-            "type": "password"
+        }
         },
         "app-name": {
             "description": {
@@ -75,43 +32,18 @@
             "type": "string",
             "pattern": "\\S"
         },
-        "virtual-server-instance": {
+        "cluster-group": {
             "description": {
-                "$ref": "#/messages/deploy.vsiLabel"
-            },
-            "validator": {
-                "v-type": "vsi-instances",
-                "params": [
-                    "vsiRegion"
-                ]
+                "$ref": "#/messages/deploy.cluster-group"
             },
             "type": "string",
             "pattern": "\\S"
-        },
-        "host-user-name": {
-            "title": {
-                "$ref": "#/messages/deploy.usernameVirtualServer"
-            },
-            "type": "string"
-        },
-        "host-ssh-keys": {
-            "title": {
-                "$ref": "#/messages/deploy.sshVirtualServer"
-            },
-            "type": "password"
-        },
-        "host-user-password": {
-            "title": {
-                "$ref": "#/messages/deploy.passwordVirtualServer"
-            },
-            "type": "password"
         }
     },
     "required": [
         "app-name",
         "api-key",
-        "vsiRegion",
-        "virtual-server-instance"
+        "cluster-group"
     ],
     "form": [
         {
@@ -134,62 +66,15 @@
             },
             "key": "api-key"
         },
-
         {
             "type": "select",
             "title": {
-                "$ref": "#/messages/deploy.vsiRegionTitle"
+                "$ref": "#/messages/deploy.clusterGroup"
             },
             "placeholder": {
-                "$ref": "#/messages/deploy.regionPlaceHolder"
+                "$ref": "#/messages/deploy.clusterGroupPlaceHolder"
             },
-            "key": "vsiRegion"
-        },
-
-        {
-            "type": "select",
-            "title": {
-                "$ref": "#/messages/deploy.vsi"
-            },
-            "placeholder": {
-                "$ref": "#/messages/deploy.vsiPlaceHolder"
-            },
-            "key": "virtual-server-instance"
-        },
-        {
-            "type": "selectfieldset",
-            "key": "type",
-            "titleMap": {
-                "credentials": {
-                    "$ref": "#/messages/deploy.userCredentials"
-                },
-                "ssh_private_key": {
-                    "$ref": "#/messages/deploy.userSSH"
-                }
-            },
-            "items": [
-                {
-                    "type": "section",
-                    "description": {
-                        "$ref": "#/messages/deploy.userCredentialsDescription"
-                    },
-                    "items": [
-                        "host-user-name",
-                        "host-user-password"
-
-                    ]
-                }, {
-                    "type": "section",
-                    "description": {
-                        "$ref": "#/messages/deploy.userSSHDescription"
-                    },
-                    "items": [
-                        "host-user-name",
-                        "host-ssh-keys"
-
-                    ]
-                }
-            ]
+            "key": "cluster-group"
         }
     ]
 }

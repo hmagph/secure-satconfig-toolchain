@@ -12,8 +12,6 @@ spec:
     - name: revision
       description: The Revision for the Application Source Code
       default: ""    
-    - name: region
-      description: The IBM Cloud Region in which Virtual Server Instance is running
     - name: api
       description: The IBM Cloud API Endpoint
     - name: apikey
@@ -33,14 +31,8 @@ spec:
       description: The Source Code Management Type as set by the Trigger Binding based on the Event Listener invoked
     - name: artifactory
       description: The variable storing artifactory integration with the toolchain
-    - name: virtual-server-instance
-      description: The IP Address of the Virtual Server Instance
-    - name: host-ssh-keys
-      description: The private SSH Key required to login to the Virtual Server Instance
-    - name: host-user-name
-      description: The username required to login to the Virtual Server Instance
-    - name: host-password
-      description: The password required to login to the Virtual Server Instance
+    - name: cluster-group
+      description: The name of the Satellite Config Cluster Group
     - name: project-id
       default: ""
     - name: cos-bucket-name

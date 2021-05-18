@@ -2,7 +2,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
-  name: trigger-template-simple-vsi-app
+  name: trigger-template-secure-satconfig-app
 spec:
   params:
     - name: repository
@@ -13,8 +13,6 @@ spec:
     - name: revision
       description: The Revision for the Application Source Code
       default: ""
-    - name: region
-      description: The IBM Cloud Region in which Virtual Server Instance is running
     - name: api
       description: the IBM Cloud api endpoint
       default: "https://cloud.ibm.com"      
@@ -41,14 +39,8 @@ spec:
       default: ""
     - name: artifactory
       description: The variable storing artifactory integration with the toolchain
-    - name: virtual-server-instance
-      description: The IP Address of the Virtual Server Instance
-    - name: host-ssh-keys
-      description: The private SSH Key required to login to the Virtual Server Instance
-    - name: host-user-name
-      description: The username required to login to the Virtual Server Instance
-    - name: host-password
-      description: The password required to login to the Virtual Server Instance
+    - name: cluster-group
+      description: The name of the Satellite Config Cluster Group
     - name: inventoryRepo
       description: The variable storing git integration for the repository storing build inventory with the toolchain
     - name: cos-region
@@ -66,7 +58,7 @@ spec:
     - apiVersion: v1
       kind: PersistentVolumeClaim
       metadata:
-        name: simple-vsi-app-$(uid)-pvc
+        name: secure-satconfig-app-$(uid)-pvc
       spec:
         resources:
           requests:
@@ -112,8 +104,8 @@ spec:
             value: $(params.project-id) 
           - name: artifactory
             value: $(params.artifactory)
-          - name: virtual-server-instance
-            value: $(params.virtual-server-instance)
+          - name: cluster-group
+            value: $(params.cluster-group)
           - name: host-ssh-keys
             value: $(params.host-ssh-keys)
           - name: host-user-name
@@ -137,7 +129,7 @@ spec:
         workspaces:
           - name: pipeline-ws
             persistentVolumeClaim:
-              claimName: simple-vsi-app-$(uid)-pvc
+              claimName: secure-satconfig-app-$(uid)-pvc
 ---
 apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding

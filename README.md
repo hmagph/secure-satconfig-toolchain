@@ -1,6 +1,6 @@
 
 
-# Develop a Simple Java Application and Deploy on Virtual Server (Virtual Machine)
+# Develop a Simple Java Application and Deploy to a Cluster Group (Satellite Config)
 
 + [Prerequisites](#prerequisites-)
 + [Advanced User Scenarios](#advanced-user-scenarios-)
@@ -15,11 +15,11 @@
         - [Modify the Continuous Deployment Pipeline task](#modify-the-continous-deployment-pipeline-task)
 + [Learn more](#learn-more)
 
-### Continuously Deliver a Java Application to the Virtual Server Instance.
+### Continuously Deliver a Java Application to a Cluster Group using Satellite Config
 
   
 
-By following this tutorial, you can create an IBM Cloud Continuous Delivery Toolchain and then use the toolchain and DevOps practices to develop a simple Java web application that you deploy to the IBM Cloud® Virtual Server Instance.
+By following this tutorial, you can create an IBM Cloud Continuous Delivery Toolchain and then use the toolchain and DevOps practices to develop a simple Java web application that you deploy at scale to an entire group of clusters in IBM Cloud® using Satellite Config.
 
 This Simple Java application exposes an HTTP Endpoint at port 8080 of the host machine to present a Hello World Greeting message at the **http://{VSI-IP-ADDRESS}:8080/v1/** HTTP Path. The application utilizes a maven build system to provide build and test capability. The application comes preconfigured for a DevOps toolchain that provides continuous delivery with source control, issue tracking, online editing, and deployment to the IBM Virtual Server Instance.  
 
@@ -86,7 +86,7 @@ Please note: Based on existing COS Instances and Buckets in your account, toolch
 
 ### To get started, click this button:
 
-[![Create toolchain](https://cloud.ibm.com/devops/graphics/create_toolchain_button.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/open-toolchain/simple-vsi-toolchain.git&env_id=ibm:yp:us-south&pipeline_type=tekton)
+[![Create toolchain](https://cloud.ibm.com/devops/graphics/create_toolchain_button.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/hmagph/secure-satconfig-toolchain.git&env_id=ibm:yp:us-south&pipeline_type=tekton)
 
 ---
 

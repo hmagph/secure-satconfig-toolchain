@@ -136,7 +136,7 @@ spec:
       description: The variable storing artifactory integration with the toolchain
     - name: appname
       description: The name of the application passed as environment variable
-    - name: virtualserverinstance
+    - name: clustergroup
       description: The IP Address of the Virtual Server Instance
     - name: hostsshkeys
       description: The private SSH Key required to login to the Virtual Server Instance
@@ -252,8 +252,8 @@ spec:
           value: $(params.artifactory)
         - name: APPNAME
           value: $(params.appname)
-        - name: VIRTUAL_SERVER_INSTANCE
-          value: $(params.virtualserverinstance)
+        - name: CLUSTER_GROUP
+          value: $(params.clustergroup)
         - name: HOST_SSH_KEYS
           value: $(params.hostsshkeys)
         - name: HOST_USER_NAME
@@ -323,7 +323,7 @@ metadata:
   name: health-check-task
 spec:
   params:
-    - name: virtualserverinstance
+    - name: clustergroup
       description: The IP Address of the Virtual Server Instance
     - name: inventoryrepo
       description: The variable storing git integration for the repository storing build inventory with the toolchain
@@ -337,7 +337,7 @@ spec:
       workingDir: /output
       env:
         - name: VIRTUAL_SERVER_INSTANCE
-          value: $(params.virtualserverinstance)
+          value: $(params.clustergroup)
         - name: INVENTORY_REPO
           value: $(params.inventoryrepo)
       script: |
@@ -364,7 +364,7 @@ metadata:
   name: acceptance-test
 spec:
   params:
-    - name: virtualserverinstance
+    - name: clustergroup
       description: The IP Address of the Virtual Server Instance
     - name: inventoryrepo
       description: The variable storing git integration for the repository storing build inventory with the toolchain
@@ -374,7 +374,7 @@ spec:
       workingDir: /output
       env:
         - name: VIRTUAL_SERVER_INSTANCE
-          value: $(params.virtualserverinstance)
+          value: $(params.clustergroup)
         - name: INVENTORY_REPO
           value: $(params.inventoryrepo)
       script: |
@@ -389,7 +389,7 @@ spec:
   params:
     - name: appname
       description: The name of the application passed as environment variable
-    - name: virtualserverinstance
+    - name: clustergroup
       description: The IP Address of the Virtual Server Instance
     - name: hostsshkeys
       description: The private SSH Key required to login to the Virtual Server Instance
@@ -415,7 +415,7 @@ spec:
         - name: APPNAME
           value: $(params.appname)
         - name: VIRTUAL_SERVER_INSTANCE
-          value: $(params.virtualserverinstance)
+          value: $(params.clustergroup)
         - name: HOST_SSH_KEYS
           value: $(params.hostsshkeys)
         - name: HOST_USER_NAME

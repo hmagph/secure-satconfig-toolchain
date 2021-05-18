@@ -56,9 +56,6 @@ metadata:
   name: upload-artifacts
 spec:
   params:
-    - name: region
-      description: The IBM Cloud Region in which Virtual Server Instance is running
-      default: region
     - name: api
       description: The IBM Cloud api endpoint
       default: "https://cloud.ibm.com"
