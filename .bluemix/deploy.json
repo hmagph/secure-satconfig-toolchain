@@ -23,7 +23,6 @@
             "validator": {
                 "v-type": "api-key"
             }
-        }
         },
         "app-name": {
             "description": {
