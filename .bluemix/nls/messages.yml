@@ -14,6 +14,7 @@ deploy.registrynsDescription: "The namespace in the container image registry. Yo
 deploy.regionDescription: "The IBM Cloud region for production deployment"
 deploy.rgDescription: "The IBM Cloud resource group for production deployment"
 deploy.apikey: "IBM Cloud API key"
+deploy.clusterGroup: "Satellite Config Cluster Group"
 deploy.clusterGroupDescription: "Select Satellite Config Cluster Group"
 deploy.rg: "Resource Group"
 deploy.clusterGroupPlaceHolder: "my-cluster-group"
