@@ -24,41 +24,64 @@
                 "v-type": "api-key"
             }
         },
+        "registry-region": {
+            "description": {
+                "$ref": "#/messages/deploy.registryRegionDescription"
+            },
+            "type": "string",
+            "disabled": false,
+            "validator": {
+                "v-type": "k8s-region",
+                "params": ["api-key"]
+            }
+        },
+        "registry-namespace": {
+            "description": {
+                "$ref": "#/messages/deploy.registrynsDescription"
+            },
+            "type": "string",
+            "pattern": "^[a-z0-9][-_a-z0-9]{2,28}[a-z0-9]$",
+            "validator": {
+                "v-type": "k8s-registry-namespace",
+                "params": ["registry-region"],
+                "validate": false
+            }
+        },
+        "cluster-group": {
+            "description": {
+                "$ref": "#/messages/deploy.clusterGroup"
+            },
+            "type": "string",
+            "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$"
+        },
+        "prod-cluster-namespace": {
+            "description": {
+                "$ref": "#/messages/deploy.clusterNs"
+            },
+            "type": "string",
+            "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$"
+        },
         "app-name": {
             "description": {
                 "$ref": "#/messages/deploy.appDescription"
             },
             "type": "string",
             "pattern": "\\S"
-        },
-        "cluster-group": {
-            "description": {
-                "$ref": "#/messages/deploy.cluster-group"
-            },
-            "type": "string",
-            "pattern": "\\S"
         }
     },
-    "required": [
-        "app-name",
-        "api-key",
-        "cluster-group"
-    ],
-    "form": [
-        {
+    "required": ["app-name", "api-key", "registry-region", "registry-namespace", "cluster-group", "cluster-namespace"],
+    "form": [{
             "type": "validator",
             "url": "/devops/validator/validator-v1.html"
-        },
-        {
+        }, {
             "type": "text",
             "readonly": false,
             "title": {
                 "$ref": "#/messages/deploy.appName"
             },
             "key": "app-name"
-        },
-        {
-            "type": "text",
+        }, {
+            "type": "password",
             "readonly": false,
             "title": {
                 "$ref": "#/messages/deploy.apikey"
@@ -66,14 +89,95 @@
             "key": "api-key"
         },
         {
-            "type": "select",
-            "title": {
-                "$ref": "#/messages/deploy.clusterGroup"
-            },
-            "placeholder": {
-                "$ref": "#/messages/deploy.clusterGroupPlaceHolder"
-            },
-            "key": "cluster-group"
+            "type": "table",
+            "columnCount": 3,
+            "widths": ["50%", "3%", "47%"],
+            "items": [{
+                "type": "label",
+                "title": {
+                    "$ref": "#/messages/deploy.containerregRegion"
+                }
+            }, {
+                "type": "label",
+                "title": ""
+            }, {
+                "type": "label",
+                "title": {
+                    "$ref": "#/messages/deploy.containerregns"
+                }
+            }, {
+                "type": "select",
+                "title": {
+                    "$ref": "#/messages/deploy.containerregRegion"
+                },
+                "key": "registry-region"
+            }, {
+                "type": "label",
+                "title": ""
+            }, {
+                "type": "select",
+                "readonly": false,
+                "title": {
+                    "$ref": "#/messages/deploy.containerregns"
+                },
+                "key": "registry-namespace"
+            }]
+        }, {
+            "type": "table",
+            "columnCount": 7,
+            "widths": ["50%", "3%", "47%"],
+            "items": [{
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/deploy.clusterGroup"
+                    }
+                },{
+                    "type": "label",
+                    "title": ""
+                },{
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/deploy.clusterNs"
+                    }
+                },{
+                    "type": "text",
+                    "key": "cluster-group",
+                    "title": {
+                        "$ref": "#/messages/deploy.clusterGroup"
+                    },
+                    "placeholder": {
+                        "$ref": "#/messages/deploy.clusterGroupPlaceHolder"
+                    },
+                    "readonly": false
+                },{
+                    "type": "label",
+                    "title": ""
+                },{
+                    "type": "text",
+                    "key": "cluster-namespace",
+                    "readonly": false
+                }
+            ]
+        }, {
+            "type": "table",
+            "columnCount": 1,
+            "widths": ["100%"],
+            "items": [{
+                "type": "label",
+                "title": {
+                    "$ref": "#/messages/deploy.clusterGroupDescription"
+                }
+            }]
+        }, {
+            "type": "table",
+            "columnCount": 1,
+            "widths": ["100%"],
+            "items": [{
+                "type": "label",
+                "title": {
+                    "$ref": "#/messages/deploy.clusternsDescription"
+                }
+            }]
         }
     ]
 }

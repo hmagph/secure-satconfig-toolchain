@@ -1,0 +1,79 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "messages": {
+        "$i18n": "locales.yml"
+    },
+    "title": {
+        "$ref": "#/messages/deploy.title"
+    },
+    "description": {
+        "$ref": "#/messages/deploy.description"
+    },
+    "longDescription": {
+        "$ref": "#/messages/deploy.longDescription"
+    },
+    "type": "object",
+    "properties": {
+        "api-key": {
+            "description": {
+                "$ref": "#/messages/deploy.apikeyDescription"
+            },
+            "type": "string",
+            "pattern": "\\S",
+            "validator": {
+                "v-type": "api-key"
+            }
+        },
+        "app-name": {
+            "description": {
+                "$ref": "#/messages/deploy.appDescription"
+            },
+            "type": "string",
+            "pattern": "\\S"
+        },
+        "cluster-group": {
+            "description": {
+                "$ref": "#/messages/deploy.cluster-group"
+            },
+            "type": "string",
+            "pattern": "\\S"
+        }
+    },
+    "required": [
+        "app-name",
+        "api-key",
+        "cluster-group"
+    ],
+    "form": [
+        {
+            "type": "validator",
+            "url": "/devops/validator/validator-v1.html"
+        },
+        {
+            "type": "text",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/deploy.appName"
+            },
+            "key": "app-name"
+        },
+        {
+            "type": "text",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/deploy.apikey"
+            },
+            "key": "api-key"
+        },
+        {
+            "type": "select",
+            "title": {
+                "$ref": "#/messages/deploy.clusterGroup"
+            },
+            "placeholder": {
+                "$ref": "#/messages/deploy.clusterGroupPlaceHolder"
+            },
+            "key": "cluster-group"
+        }
+    ]
+}
